@@ -10,7 +10,7 @@ WORKDIR /tmp/teleport
 RUN make install
 COPY config/teleport.yml /etc/teleport.yml
 RUN sed -i "s/nodename: changeme/nodename: $NODENAME/g" /etc/teleport.yml && sed -i "s/auth_token: xxxx-token-xxxx/auth_token: $AUTH_TOKEN/g" /etc/teleport.yml
-RUN rm -rf /tmp/teleport-v1.0.0-linux-amd64-bin.tar.gz /tmp/teleport
+RUN rm -rf /tmp/teleport-${VERSION}-linux-amd64-bin.tar.gz /tmp/teleport
 EXPOSE 3022 3023 3024 3025 3080
 ENTRYPOINT ["/usr/local/bin/teleport", "start"]
 
